@@ -1,0 +1,27 @@
+{
+  "name": "salamedica",
+  "version": "1.0.0",
+  "description": "Este tp va a tratar de una sala medica, con doctores y pacientes-",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node .",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanmotok32/SalaMedica.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juanmotok32/SalaMedica/issues"
+  },
+  "homepage": "https://github.com/juanmotok32/SalaMedica#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql2": "^3.10.0",
+    "sequelize": "^6.37.3"
+  }
+}
