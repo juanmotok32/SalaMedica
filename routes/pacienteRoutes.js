@@ -9,15 +9,15 @@ const pacienteRoutes = Router();
 pacienteRoutes.get("/", paciente.readAllPacientes);
 
 // Ruta para obtener un usuario por ID
-pacienteRoutes.get("/:id", paciente.readPacienteById);
+pacienteRoutes.get("/:id_paciente", paciente.readPacienteById);
 
 // Ruta para agregar un nuevo usuario
 pacienteRoutes.post("/", paciente.createPaciente);
 
 // Ruta para actualizar un usuario por ID
-pacienteRoutes.put("/:idUsuario", paciente.editarPaciente);
+pacienteRoutes.put("/:id_paciente", paciente.editarPaciente);
 
 // Ruta para eliminar un usuario por ID
-pacienteRoutes.delete("/:id", paciente.eliminarPaciente);
+pacienteRoutes.delete("/:id_paciente", paciente.eliminarPaciente);
 
 export default pacienteRoutes;

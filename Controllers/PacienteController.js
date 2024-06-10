@@ -2,7 +2,6 @@ import connectionDb from "../connection/connectionDb.js";
 
 class PacienteController {
 
-   
     createPaciente = async (req, res) => {
         try {
             const { razon_asistencia, nombre, apellido, edad } = req.body;
@@ -24,7 +23,6 @@ class PacienteController {
             res.status(400).send({ success: false, message: error.message });
         }
     }
-
     
     eliminarPaciente = async (req, res) => {
         try {
@@ -43,7 +41,7 @@ class PacienteController {
 
     readAllPacientes = async (req, res) => {
         try {
-            const query = "SELECT nombre, apellido, edad, alta FROM pacientes";
+            const query = "SELECT * FROM pacientes";
             const [result] = await connectionDb.query(query);
             res.status(200).send({ success: true, data: result });
         } catch (error) {
@@ -54,7 +52,8 @@ class PacienteController {
     readPacienteById = async (req, res) => {
         try {
             const { id } = req.params;
-            const query = "SELECT nombre, apellido, edad, alta FROM pacientes WHERE id_paciente = ?";
+            console.log(`Querying paciente with id: ${id}`); // Log de depuración
+            const query = `SELECT nombre, apellido, edad, alta FROM pacientes WHERE id_paciente = ${id}`;
             const [result] = await connectionDb.query(query, [id]);
             if (result.length > 0) {
                 res.status(200).send({ success: true, data: result[0] });
@@ -62,9 +61,11 @@ class PacienteController {
                 res.status(404).send({ success: false, message: "Paciente no encontrado" });
             }
         } catch (error) {
+            console.error(`Error querying paciente by id: ${error.message}`); 
             res.status(400).send({ success: false, message: error.message });
         }
     }
+
 
     editarPaciente = async (req, res) => {
         try {
