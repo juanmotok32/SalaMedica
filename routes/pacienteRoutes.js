@@ -15,7 +15,7 @@ pacienteRoutes.get("/:id_paciente", paciente.readPacienteById);
 pacienteRoutes.post("/", paciente.createPaciente);
 
 // Ruta para actualizar un usuario por ID
-pacienteRoutes.put("/:id_paciente", paciente.editarPaciente);
+pacienteRoutes.put("/", paciente.editarPaciente);
 
 // Ruta para eliminar un usuario por ID
 pacienteRoutes.delete("/:id_paciente", paciente.eliminarPaciente);

@@ -4,6 +4,9 @@ import connectionDb from "./connection/connectionDb.js";
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use('/salaMedica', routes);
 
 await connectionDb.sync()

@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node . --watch",
-    "start": "node ."
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
     "express": "^4.19.2",
     "mysql2": "^3.10.0",
     "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
