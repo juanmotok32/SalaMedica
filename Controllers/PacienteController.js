@@ -1,12 +1,14 @@
 import Paciente from "../routes/Models/Pacientes.js";
+import connectionDb from "../connection/connectionDb.js";
 
 class PacienteController {
 
     createPaciente = async (req, res) => {
         try {
-            const { name, mail, password } = req.body;
-            const data = await Paciente.create({ name, mail, password });
-            res.status(201).send({ success: true, message: `Paciente : ${data.name} fue creado con exito :D` });
+            const query = "SELECT * FROM pacientes";
+            const [data] = await connectionDb.query(query);
+            console.log('data: ' + data);
+            res.status(200).send({ success: true, message: data });
         } catch (error) {
             res.status(400).send({ success: false, message: error.message });
         }
