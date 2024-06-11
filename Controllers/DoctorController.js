@@ -72,40 +72,31 @@ class DoctorController {
             res.status(400).send({ success: false, message: error.message });
         }
     }
-    
-/*
-  async getPacientesAlta(req, res) {
-        const query = `SELECT nombre, apellido, edad, alta FROM pacientes WHERE alta = true`;
-        try {
-            const [results] = await connectionDb.query(query);
-            res.status(200).json(results);
-        } catch (error) {
-            res.status(500).json({ error: error.message });
-        }
-    }
-
-
-    async updateAltaPaciente(req, res) {
-        const { id_paciente } = req.params;
-        const { alta } = req.body;
-    
-        try {
-            const paciente = await Pacientes.findByPk(id_paciente);
-            if (!paciente) {
-                return res.status(404).json({ message: "Paciente no encontrado" });
+    darAlta = async(req,res) =>{
+        try{
+            const { id } = req.body;
+            const query = `UPDATE pacientes SET alta = 1 WHERE id_paciente = ${id}`;
+            const [result] = await connectionDb.query(query);
+            if (result.affectedRows > 0) {
+                res.status(200).send({ success: true, message: `Paciente con id: ${id} fue actualizado correctamente` });
+            } else {
+                res.status(404).send({ success: false, message: "Paciente no encontrado" });
             }
-    
-            paciente.alta = alta;
-            await paciente.save();
-    
-            res.status(200).json(paciente);
-        } catch (error) {
-            res.status(500).json({ error: error.message });
+        }catch(error){
+            res.status(400).send({ success: false, message: error.message });
         }
     }
-*/
-
+    pacientesAlta = async(req, res)=>{
+        try{
+            const query = "SELECT * FROM pacientes WHERE alta = 1";
+            const [result] = await connectionDb.query(query);
+            res.status(200).send({ success: true, data: result });
+        }catch(error){
+            res.status(400).send({ success: false, message: error.message });
+        }
+    }
 }
+
 
 
 export default DoctorController;

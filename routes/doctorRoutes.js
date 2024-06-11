@@ -19,10 +19,8 @@ doctorRoutes.put("/", doctor.editarDoctor);
 
 // Ruta para eliminar un usuario por ID
 doctorRoutes.delete("/:id", doctor.eliminarDoctor);
-/*
-doctorRoutes.get("/pacientes/alta", doctor.getPacientesAlta);
 
-doctorRoutes.put("/pacientes/:id_paciente/alta", doctor.updateAltaPaciente);
-*/
+doctorRoutes.delete("/darAlta/paciente", doctor.darAlta);
 
+doctorRoutes.get("/pacientes/alta", doctor.pacientesAlta);
 export default doctorRoutes;
