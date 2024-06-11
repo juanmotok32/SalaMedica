@@ -29,3 +29,18 @@ Cada Doctor va a tener: id (PK), Nombre, Apellido, Lista de pacientes y una espe
  Dar alta ✅
  Mostrar pacientes (sin alta) ) ✅
 * Organizar el codigo usando MVC (Modelo-Vista-Controlador) ✅
+
+
+
+Front:
+Inicio✅
+Agregar:
+Doctores✅
+Pacientes✅
+Leer:
+Pacientes
+Pacientes por id
+Doctores
+Doctores por id
+Dar alta
+Mostrar pacientes sin alta

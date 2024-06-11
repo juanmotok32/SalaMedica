@@ -1,0 +1,19 @@
+body {
+    background-color: #361E1E;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+label {
+    color: #694F4F;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+form {
+    color: #694F4F;
+    margin: 20px;
+}
