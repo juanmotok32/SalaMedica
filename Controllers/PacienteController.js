@@ -50,7 +50,7 @@ class PacienteController {
             res.status(400).send({ success: false, message: error.message });
         }
     }
-
+    
     readPacienteById = async (req, res) => {
         try {
             const { id_paciente } = req.params;
@@ -67,6 +67,7 @@ class PacienteController {
             res.status(400).send({ success: false, message: error.message });
         }
     }
+
     editarPaciente = async (req, res) => {
         try {
             const { nombre, apellido, edad, alta,id } = req.body;
@@ -87,6 +88,35 @@ class PacienteController {
             }
         } catch (error) {
             res.status(400).send({ success: false, message: error.message });
+        }
+    }
+    async getPacientesAlta(req, res) {
+        const query = `SELECT nombre, apellido, edad, alta FROM pacientes WHERE alta = true`;
+        try {
+            const [results] = await connectionDb.query(query);
+            res.status(200).json(results);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
+
+    async updateAltaPaciente(req, res) {
+        const { id_paciente } = req.params;
+        const { alta } = req.body;
+    
+        try {
+            const paciente = await Pacientes.findByPk(id_paciente);
+            if (!paciente) {
+                return res.status(404).json({ message: "Paciente no encontrado" });
+            }
+    
+            paciente.alta = alta;
+            await paciente.save();
+    
+            res.status(200).json(paciente);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
         }
     }
 }
