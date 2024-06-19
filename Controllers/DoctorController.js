@@ -86,6 +86,7 @@ class DoctorController {
             res.status(400).send({ success: false, message: error.message });
         }
     }
+    
     pacientesAlta = async(req, res)=>{
         try{
             const query = "SELECT * FROM pacientes WHERE alta = 1";

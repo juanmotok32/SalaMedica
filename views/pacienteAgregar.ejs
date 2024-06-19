@@ -3,27 +3,41 @@
 
 <head>
     <title>Agregar Paciente</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2dffefd117.js" crossorigin="anonymous"></script>
     <style>
-        body {
-            background-color: #361E1E;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .body-doc {
+            background-image: url(../Iconos-Imagenes/circles\ wallpaper.jfif);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             height: 100vh;
-            margin: 0;
             color: white;
             text-align: center;
         }
 
-        .container {
-            width: 100%;
-            max-width: 400px;
+        .formulario-article {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
-        form {
+        .titulo {
+            margin-bottom: 20px;
+        }
+
+        .formulario-doc {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -32,68 +46,90 @@
         label,
         input,
         select {
-            margin: 10px 0;
             width: 100%;
+            margin: 10px 0;
         }
 
-        input[type="submit"] {
-            width: auto;
-            padding: 10px 20px;
+        .btn-agregar-doc {
+            width: 150px;
+            font-size: 17px;
+            margin-top: 25px;
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+        }
+
+        .btn-agregar-doc:hover {
+            background-color: rgb(4, 176, 215);
+            color: white;
+            border: none;
+        }
+
+        .btn-agregar-doc:active {
+            transform: scale(0.7);
+            background-color: rgb(4, 176, 215);
+            color: white;
+            border: none;
+        }
+
+        .boton {
+            margin-top: 10px;
+        }
+
+        .boton a {
+            color: white;
+            text-decoration: none;
         }
     </style>
-
-    <script>
-        function submitForm(event) {
-            event.preventDefault();
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", '/SM/pacientes', true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({
-                nombre: document.getElementById('nombre').value,
-                apellido: document.getElementById('apellido').value,
-                edad: document.getElementById('edad').value,
-                razon_asistencia: document.getElementById('razon_asistencia').value
-            }));
-            xhr.onload = function () {
-                if (xhr.status == 200) {
-                    alert("Se agregó un nuevo paciente");
-                } else {
-                    alert("error al agregarse");
-                }
-            };
-        }
-    </script>
-
 </head>
 
-<body>
-    <h1>Agregar Paciente</h1>
-    <form onsubmit="submitForm(event)">
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre"><br>
-        <label for="apellido">Apellido:</label><br>
-        <input type="text" id="apellido" name="apellido"><br>
-        <label for="edad">Edad:</label><br>
-        <input type="number" id="edad" name="edad"><br>
-        <label for="razon_asistencia">Razón de Asistencia:</label><br>
-        <select id="razon_asistencia" name="razon_asistencia">
-            <option value=""></option>
-            <option value="Cardiologo">Cardiologo</option>
-            <option value="Pediatra">Pediatra</option>
-            <option value="Dermatologo">Dermatologo</option>
-            <option value="Podologo">Podologo</option>
-            <option value="Ortopedia">Ortopedia</option>
-        </select><br>
-        <input type="submit" value="Agregar Paciente">
-    </form>
+<body class="body-doc">
+    <article class="formulario-article">
+        <di class="formulario-div">
+            <h1>Agregar Paciente</h1>
+            <form class=".formulario-article" onsubmit="submitForm(event)">
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre" name="nombre"><br>
+                <label for="apellido">Apellido:</label><br>
+                <input type="text" id="apellido" name="apellido"><br>
+                <label for="edad">Edad:</label><br>
+                <input type="number" id="edad" name="edad"><br>
+                <label for="razon_asistencia">Razón de Asistencia:</label><br>
+                <select id="razon_asistencia" name="razon_asistencia">
+                    <option value=""></option>
+                    <option value="Cardiologo">Cardiologo</option>
+                    <option value="Pediatra">Pediatra</option>
+                    <option value="Dermatologo">Dermatologo</option>
+                    <option value="Podologo">Podologo</option>
+                    <option value="Ortopedia">Ortopedia</option>
+                </select><br>
+                <input class=".btn-agregar-doc:hover" type="submit" value="Agregar Paciente" class="btn-agregar-pac">
+            </form>
 
+            <button class="boton"><a href="/"><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    Inicio</a></button>
+        </di>
+    </article>
 </body>
-
-<footer>
-    <button onclick="window.location.href='/';">
-        Volver
-    </button>
-</footer>
-
+<script>
+    function submitForm(event) {
+        event.preventDefault();
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/SM/pacientes', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            nombre: document.getElementById('nombre').value,
+            apellido: document.getElementById('apellido').value,
+            edad: document.getElementById('edad').value,
+            razon_asistencia: document.getElementById('razon_asistencia').value
+        }));
+        xhr.onload = function () {
+            if (xhr.status == 200) {
+                alert("Se agregó un nuevo paciente");
+            } else {
+                alert("error al agregarse");
+            }
+        };
+    }
+</script>
 
 </html>
