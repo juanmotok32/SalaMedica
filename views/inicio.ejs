@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2dffefd117.js" crossorigin="anonymous"></script>
+    <title>Inicio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            margin-top: 4rem;
+        }
+
+        .proyecto {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: first baseline;
+            width: 40rem;
+            height: 50rem;
+            box-shadow: 0 0 20px #46aedffa;
+            border-radius: 10px;
+            animation: rotateShadow 5s linear infinite;
+        }
+
+        .titulo {
+            color: rgb(4, 176, 215);
+            margin: 30px 0 60px;
+            font-size: 40px;
+        }
+
+        h2 {
+            color: rgb(189, 189, 189);
+            margin-bottom: 50px;
+        }
+
+        h3 {
+            color: rgb(189, 189, 189);
+            margin-bottom: 30px;
+        }
+
+        .botones {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .doctor,
+        .paciente {
+            display: flex;
+            flex-direction: column;
+            margin: 30px;
+        }
+
+        img {
+            width: 35px;
+            height: 35px;
+        }
+
+        span {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .boton {
+            border: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            font-size: 25px;
+            border-radius: 10px;
+        }
+
+        .boton a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: rgb(130, 130, 130);
+            gap: 15px;
+            width: 11rem;
+            height: 3rem;
+        }
+
+        .doctor-btn:hover {
+            background-color: rgb(4, 176, 215);
+        }
+
+        .doctor-btn:hover a {
+            color: white;
+        }
+
+        .paciente-btn:hover {
+            background-color: rgba(255, 0, 0, 0.573);
+        }
+
+        .paciente-btn:hover a {
+            color: white;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="proyecto">
+        <h1 class="titulo">En esta pagina se pueden gestionar turnos medicos</h1>
+        <h2>Aca podras crear, eliminar, y buscar pacientes y doctores</h2>
+        <h3>Cada paciente tiene un doctor y un doctor puede tener muchos pacientes</h3>
+        <div class="botones">
+            <div class="doctor">
+                <span>Aqui podras crear doctores</span>
+                <button class="boton doctor-btn"><a href="/doctores/agregar">Doctores <i
+                            class="fa-solid fa-stethoscope"></i></a></button>
+            </div>
+            <div class="paciente">
+                <span>Aqui podras crear pacientes</span>
+                <button class="boton paciente-btn"><a href="/pacientes/agregar">Pacientes <i
+                            class="fa-solid fa-hospital-user"></i></a></button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

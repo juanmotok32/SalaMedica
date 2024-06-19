@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Agregar Doctores</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2dffefd117.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .body-doc {
+            background-image: url(../Iconos-Imagenes/circles\ wallpaper.jfif);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            text-align: center;
+        }
+
+        .formulario-article {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .titulo {
+            margin-bottom: 20px;
+        }
+
+        .formulario-doc {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label,
+        input,
+        select {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .btn-agregar-doc {
+            width: 150px;
+            font-size: 17px;
+            margin-top: 25px;
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+        }
+
+        .btn-agregar-doc:hover {
+            background-color: rgb(4, 176, 215);
+            color: white;
+            border: none;
+        }
+
+        .btn-agregar-doc:active {
+            transform: scale(.7);
+            background-color: rgb(4, 176, 215);
+            color: white;
+            border: none;
+        }
+
+        .boton {
+            margin-top: 10px;
+        }
+
+        .boton a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .boton i {
+            margin-right: 5px;
+        }
+    </style>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/SM/doctores', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                nombre_doctor: document.getElementById('nombre_doctor').value,
+                apellido_doctor: document.getElementById('apellido_doctor').value,
+                especialidad: document.getElementById('especialidad').value
+            }));
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    alert("Se agregó un nuevo doctor");
+                } else {
+                    alert("error al agregarse");
+                }
+            };
+        }
+    </script>
+</head>
+
+<body class="body-doc">
+    <article class="formulario-article">
+        <div class="formulario-div">
+            <h1 class="titulo">Agregar Doctores</h1>
+            <form onsubmit="submitForm(event)" class="formulario-doc">
+                <label for="nombre_doctor">Nombre:</label><br>
+                <input type="text" id="nombre_doctor" name="nombre_doctor"><br>
+                <label for="apellido_doctor">Apellido:</label><br>
+                <input type="text" id="apellido_doctor" name="apellido_doctor"><br>
+                <label for="especialidad">Especialidad:</label><br>
+                <select id="especialidad" name="especialidad">
+                    <option value=""></option>
+                    <option value="Cardiologo">Cardiologo</option>
+                    <option value="Pediatra">Pediatra</option>
+                    <option value="Dermatologo">Dermatologo</option>
+                    <option value="Podologo">Podologo</option>
+                    <option value="Ortopedia">Ortopedia</option>
+                </select><br>
+                <input type="submit" value="Agregar Doctor" class="btn-agregar-doc">
+            </form>
+            <button class="boton">
+                <a href="/"><i class="fa-solid fa-arrow-right-to-bracket"></i>Inicio</a>
+            </button>
+        </div>
+    </article>
+
+</body>
+
+</html>
