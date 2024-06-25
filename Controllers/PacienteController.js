@@ -4,19 +4,12 @@ class PacienteController {
     createPaciente = async (req, res) => {
         try {
             const { razon_asistencia, nombre, apellido, edad } = req.body;
-            console.log(razon_asistencia);
-            const opcionesRazonAsistencia = ['Cardiologo', 'Pediatra', 'Dermatologo', 'Podologo', 'Ortopedia'];
-            if (!opcionesRazonAsistencia.includes(razon_asistencia)) {
-                throw new Error('La razón de asistencia especificada no es válida');
-            }
             const doctorQuery = `SELECT id_doctor FROM doctores WHERE especialidad = '${razon_asistencia}' LIMIT 1`;
-            console.log(doctorQuery); // Imprime la consulta para depuración
             const [doctorResult] = await connectionDb.query(doctorQuery);
             if (!doctorResult || doctorResult.length === 0) {
                 throw new Error('No se encontró un doctor para la especialidad especificada.');
             }
             const id_doctor = doctorResult[0].id_doctor;
-            
             const pacienteQuery = `INSERT INTO pacientes (razon_asistencia, nombre, apellido, edad, alta, id_doctor) VALUES ('${razon_asistencia}', '${nombre}', '${apellido}', ${edad}, false, ${id_doctor})`;
             const [result] = await connectionDb.query(pacienteQuery);
     
@@ -54,7 +47,7 @@ class PacienteController {
     readPacienteById = async (req, res) => {
         try {
             const { id_paciente } = req.params;
-            console.log(id_paciente); // Log de depuración
+            console.log(id_paciente); 
             const query = `SELECT nombre, apellido, edad, alta FROM pacientes WHERE id_paciente = ${id_paciente} `;
             const [result] = await connectionDb.query(query, [id_paciente]);
             if (result.length > 0) {

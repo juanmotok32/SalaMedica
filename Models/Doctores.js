@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import connectionDb from "../../connection/connectionDb.js";
+import connectionDb from "../connection/connectionDb.js";
 
 class Doctores extends Model{}
 

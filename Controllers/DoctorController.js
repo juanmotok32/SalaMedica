@@ -72,6 +72,7 @@ class DoctorController {
             res.status(400).send({ success: false, message: error.message });
         }
     }
+    
     darAlta = async(req,res) =>{
         try{
             const { id } = req.body;

@@ -10,6 +10,7 @@ app.use(express.json());
 
 app.set('view engine', 'ejs');
 
+
 const __dirname = path.resolve();
 app.set('views', path.join(__dirname, 'views'));
 

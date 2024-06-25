@@ -46,8 +46,8 @@ Pacientes.init(
     }
 );
 
-// Definición de la relación (opcional, si aún no está definida en el modelo `Doctores`)
 Doctores.hasMany(Pacientes, { foreignKey: 'id_doctor' });
 Pacientes.belongsTo(Doctores, { foreignKey: 'id_doctor' });
+
 
 export default Pacientes;
